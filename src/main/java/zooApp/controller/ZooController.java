@@ -21,15 +21,20 @@ public class ZooController
     @GetMapping(path = "/animals")
     ResponseEntity<?> readAllAnimals()
     {
-        return ResponseEntity.ok(zooService.readAllAnimals());
+        System.out.println();
+        System.out.println("lista zwierząt");
+        for (Animal a : this.zooService.readAllAnimals())
+            System.out.println(a);
+
+        return ResponseEntity.ok(this.zooService.readAllAnimals());
     }
 
     @GetMapping(path = "/zones")
     ResponseEntity<?> readAllZones()
     {
-        return ResponseEntity.ok(zooService.readAllZones());
+        return ResponseEntity.ok(this.zooService.readAllZones());
     }
-//// TODO tu zapewne przekazuję id istniejącej zony - tu nie mam pojęcia jak ugryźć
+//// TODO tu zapewne przekazuję id istniejącej strefy - tu nie mam pojęcia jak ugryźć
 //    @PostMapping(path = "/animals")
 //    ResponseEntity<Animal> createAnimal(@RequestBody @Valid Animal toCreate, @RequestParam("zoneId") Integer zoneId)
 //    {
