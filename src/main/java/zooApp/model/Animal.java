@@ -1,5 +1,7 @@
 package zooApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Animal
     private String name;
     @Enumerated(EnumType.STRING)
     private Type type;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "zone_id")
     private Zone zone;
@@ -50,15 +53,5 @@ public class Animal
 
     public void setZone(Zone zone) {
         this.zone = zone;
-    }
-
-    @Override
-    public String toString() {
-        return "Animal{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", zone=" + zone +
-                '}';
     }
 }

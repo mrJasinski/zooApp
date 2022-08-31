@@ -1,5 +1,7 @@
 package zooApp.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class Zone
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @JsonManagedReference
     @OneToMany(mappedBy = "zone")
     private Set<Animal> animals;
 
@@ -40,14 +43,5 @@ public class Zone
 
     public void setAnimals(Set<Animal> animals) {
         this.animals = animals;
-    }
-
-    @Override
-    public String toString() {
-        return "Zone{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", animals=" + animals +
-                '}';
     }
 }

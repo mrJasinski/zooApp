@@ -17,13 +17,4 @@ public interface SqlAnimalRepository extends AnimalRepository, JpaRepository<Ani
     @Override
     @Query(value = "SELECT * FROM animals WHERE name = :name", nativeQuery = true)
     List<Animal> findAnimalsByName(String name);
-
-
-//    @Override
-//    @Query(value = "SELECT SUM (foodUsage) FROM animals WHERE zone_id = :zoneId", nativeQuery = true)
-//    Integer sumFoodUsageByZoneId(Integer zoneId);
-//
-//    @Override
-//    @Query(value = "SELECT SUM (foodUsage) FROM animals WHERE zone_id = :zoneId", nativeQuery = true)
-//    Integer sumInhabitantsNumberByZoneId(Integer zoneId);
 }

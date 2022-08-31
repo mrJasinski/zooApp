@@ -10,7 +10,4 @@ public interface AnimalRepository
     List<Animal> findAll();
     List<Animal> findAnimalsByZoneId(Integer zoneId);
     List<Animal> findAnimalsByName(String name);
-//
-//    Integer sumFoodUsageByZoneId(Integer zoneId);
-//    Integer sumInhabitantsNumberByZoneId(Integer zoneId);
 }

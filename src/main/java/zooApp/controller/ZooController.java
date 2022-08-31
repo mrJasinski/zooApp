@@ -21,11 +21,6 @@ public class ZooController
     @GetMapping(path = "/animals")
     ResponseEntity<?> readAllAnimals()
     {
-        System.out.println();
-        System.out.println("lista zwierząt");
-        for (Animal a : this.zooService.readAllAnimals())
-            System.out.println(a);
-
         return ResponseEntity.ok(this.zooService.readAllAnimals());
     }
 
@@ -34,29 +29,11 @@ public class ZooController
     {
         return ResponseEntity.ok(this.zooService.readAllZones());
     }
-//// TODO tu zapewne przekazuję id istniejącej strefy - tu nie mam pojęcia jak ugryźć
-//    @PostMapping(path = "/animals")
-//    ResponseEntity<Animal> createAnimal(@RequestBody @Valid Animal toCreate, @RequestParam("zoneId") Integer zoneId)
-//    {
-//        toCreate.setZone(this.zooService.readZoneById(zoneId));
-//
-//        var result = this.zooService.createAnimal(toCreate);
-//
-//        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
-//    }
 
     @PostMapping(path = "/animals")
     ResponseEntity<Animal> createAnimal(@RequestBody @Valid Animal toCreate)
     {
-        System.out.println();
-        System.out.println("toCreate");
-        System.out.println(toCreate.toString());
-
         var result = this.zooService.createAnimal(toCreate);
-
-        System.out.println();
-        System.out.println("result");
-        System.out.println(result.toString());
 
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
@@ -64,15 +41,7 @@ public class ZooController
     @PostMapping(path = "/zones")
     ResponseEntity<Zone> createZone(@RequestBody @Valid Zone toCreate)
     {
-        System.out.println();
-        System.out.println("toCreate");
-        System.out.println(toCreate.toString());
-
         var result = this.zooService.createZone(toCreate);
-
-        System.out.println();
-        System.out.println("result");
-        System.out.println(result.toString());
 
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }

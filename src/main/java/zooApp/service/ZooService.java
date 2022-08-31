@@ -33,10 +33,6 @@ public class ZooService
         return this.zoneRepository.save(toCreate);
     }
 
-    public Zone readZoneById(Integer zoneId) {
-        return this.zoneRepository.findById(zoneId).orElseThrow();
-    }
-
     public List<Zone> readAllZones()
     {
         return this.zoneRepository.findAll();
@@ -66,7 +62,7 @@ public class ZooService
             map.put(zone, usage);
         }
 
-        return String.format("Strefa z największym zapotrzebowaniem na karmę to: %s Zapotrzebowanie wynosi: %s jednostek dziennie",
+        return String.format("Strefa z największym zapotrzebowaniem na karmę to: %s Zapotrzebowanie wynosi: %s jednostek karmy dziennie",
                 Collections.max(map.entrySet(), Comparator.comparingDouble(Map.Entry::getValue)).getKey().getName(),
                 Collections.max(map.entrySet(), Comparator.comparingDouble(Map.Entry::getValue)).getValue());
     }
@@ -80,7 +76,7 @@ public class ZooService
             map.put(zone, zone.getAnimals().size());
         }
 
-        return String.format("Strefa z najmniejszą ilością zwierząt to: %s Liczba przypisanych to: %s zwierząt",
+        return String.format("Strefa z najmniejszą ilością zwierząt to: %s Liczba przypisanych zwierząt to: %s",
                 Collections.min(map.entrySet(), Comparator.comparingDouble(Map.Entry::getValue)).getKey().getName(),
                 Collections.min(map.entrySet(), Comparator.comparingDouble(Map.Entry::getValue)).getValue());
     }
